@@ -1,0 +1,40 @@
+experiment_name: ""  # Be careful not to override previous experiments!
+
+num_experiments: 8
+experiment_ids: 1  # If list: id's, If int: start id (from 1)
+
+# NOTE: Make sure the configurations of compared experiments match up,
+# including the order of elements.
+
+
+experiment1:
+  iteration: 50
+  datasets_and_workers: [["PK2", 4]]
+  epsilons: [0.1]
+  noise_var: 0.01
+  delta: 0.05
+  cone_degrees: [90]
+  conf_contractions: [64]
+  algorithm: "PaVeBa"
+  PaVeBa:
+    GP:
+      use_gp: True
+      independent: True
+      ellipsoid: False
+      batch_sizes: [null, 256, 128, 64, 32, 16, 8, 4]
+
+experiment2:
+  iteration: 50
+  datasets_and_workers: [["PK2", 3]]
+  epsilons: [0.1]
+  noise_var: 0.01
+  delta: 0.05
+  cone_degrees: [90]
+  conf_contractions: [64]
+  algorithm: "PaVeBa"
+  PaVeBa:
+    GP:
+      use_gp: True
+      independent: False
+      ellipsoid: True
+      batch_sizes: [null, 256, 128, 64, 32, 16, 8, 4]

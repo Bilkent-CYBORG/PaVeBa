@@ -1,0 +1,25 @@
+experiment_name: ""  # Be careful not to override previous experiments!
+
+num_experiments: 1
+experiment_ids: 1  # If list: id's, If int: start id (from 1)
+
+# NOTE: Make sure the configurations of compared experiments match up,
+# including the order of elements.
+
+
+experiment1:
+  iteration: 50
+  datasets_and_workers: [["DiskBrake", 2]]
+  epsilons: [0.1]
+  noise_var: 0.01
+  delta: 0.05
+  cone_degrees: [
+    10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100,
+    105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160, 165, 170
+  ]
+  conf_contractions: [16]
+  algorithm: "PaVeBa"
+  PaVeBa:
+    GP:
+      use_gp: False
+      independent: False

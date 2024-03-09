@@ -1,0 +1,62 @@
+experiment_name: ""  # Be careful not to override previous experiments!
+
+num_experiments: 4
+experiment_ids: 1  # If list: id's, If int: start id (from 1)
+
+# NOTE: Make sure the configurations of compared experiments match up,
+# including the order of elements.
+
+
+experiment1:
+  iteration: 50
+  datasets_and_workers: [["DiskBrake", 2]]
+  epsilons: [0.01, 0.1]
+  noise_var: 0.01
+  delta: 0.05
+  cone_degrees: [45, 60, 90, 120, 135]
+  conf_contractions: [16]
+  algorithm: "PaVeBa"
+  PaVeBa:
+    GP:
+      use_gp: False
+      independent: False
+
+experiment2:
+  iteration: 50
+  datasets_and_workers: [["DiskBrake", null]]
+  epsilons: [0.01, 0.1]
+  noise_var: 0.01
+  delta: 0.05
+  cone_degrees: [45, 60, 90, 120, 135]
+  conf_contractions: [16]
+  algorithm: "Naive"
+  Naive:
+    compare_experiment_id: 1
+    samples: null  # (dset x cone) x eps
+
+experiment3:
+  iteration: 50
+  datasets_and_workers: [["SNW", 1]]
+  epsilons: [0.01, 0.1]
+  noise_var: 0.01
+  delta: 0.05
+  cone_degrees: [45, 60, 90, 120, 135]
+  conf_contractions: [16]
+  algorithm: "PaVeBa"
+  PaVeBa:
+    GP:
+      use_gp: False
+      independent: False
+
+experiment4:
+  iteration: 50
+  datasets_and_workers: [["SNW", null]]
+  epsilons: [0.01, 0.1]
+  noise_var: 0.01
+  delta: 0.05
+  cone_degrees: [45, 60, 90, 120, 135]
+  conf_contractions: [16]
+  algorithm: "Naive"
+  Naive:
+    compare_experiment_id: 3
+    samples: null  # (dset x cone) x eps
